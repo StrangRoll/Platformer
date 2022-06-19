@@ -7,22 +7,19 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator _animator;
-    private int _directionRight = 1;
-    private int _directionLeft = -1;
-    private int _directionZero = 0;
 
     public void AnimateMovement(float input)
     {
         switch (input)
         {
             case 1:
-                _animator.SetInteger("Direction", _directionRight);
+                _animator.SetInteger(AnimationStates.DirectionVariable, AnimationStates.DirectionRight);
                 break;
             case -1:
-                _animator.SetInteger("Direction", _directionLeft);
+                _animator.SetInteger(AnimationStates.DirectionVariable, AnimationStates.DirectionLeft);
                 break;
             case 0:
-                _animator.SetInteger("Direction", _directionZero);
+                _animator.SetInteger(AnimationStates.DirectionVariable, AnimationStates.DirectionZero);
                 break;
         }
     }
@@ -31,4 +28,12 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
+}
+
+public class AnimationStates
+{
+    public const string DirectionVariable = "Direction";
+    public const int DirectionRight = 1;
+    public const int DirectionLeft = -1;
+    public const int DirectionZero = 0;
 }
